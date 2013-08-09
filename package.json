@@ -6,6 +6,6 @@
     },
     "repository": "git://github.com/freshlogic/whosit.git",
     "scripts": {
-        "test": "node ./test/test"
+        "test": "mocha --reporter spec"
     }
 }
