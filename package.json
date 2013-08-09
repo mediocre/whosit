@@ -1,0 +1,10 @@
+{
+    "name": "whosit",
+    "version": "1.0.0",
+    "devDependencies": {
+        "mocha": "*"
+    },
+    "scripts": {
+        "test": "node ./test/whosit"
+    }
+}
