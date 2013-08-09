@@ -5,6 +5,6 @@
         "mocha": "*"
     },
     "scripts": {
-        "test": "node ./test/whosit"
+        "test": "node ./test/test"
     }
 }
