@@ -1,9 +1,9 @@
-[![Build Status](https://travis-ci.org/freshlogic/whosit.png?branch=master)](https://travis-ci.org/freshlogic/whosit)
-
 whosit
 ======
 
 A personal name parser for Node.js: http://en.wikipedia.org/wiki/Personal_name
+
+[![NPM](https://nodei.co/npm/whosit.png)](https://nodei.co/npm/whosit/)
 
 ```js
 var whosit = require('whosit');
@@ -16,3 +16,5 @@ console.log('Middle: ' + name.middle);
 console.log('Last: ' + name.last);
 console.log('Suffix: ' + name.suffix);
 ```
+
+[![Build Status](https://travis-ci.org/freshlogic/whosit.png?branch=master)](https://travis-ci.org/freshlogic/whosit)
