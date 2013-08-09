@@ -3,10 +3,12 @@
     "devDependencies": {
         "mocha": "*"
     },
+    "keywords": ["name", "parser"],
+    "main": "./lib/whosit",
     "name": "whosit",
     "repository": "git://github.com/freshlogic/whosit.git",
     "scripts": {
         "test": "mocha --reporter spec"
     },
-    "version": "1.0.1"
+    "version": "1.0.2"
 }
