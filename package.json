@@ -1,11 +1,12 @@
 {
-    "name": "whosit",
-    "version": "1.0.0",
+    "description": "A personal name parser for Node.js: http://en.wikipedia.org/wiki/Personal_name",
     "devDependencies": {
         "mocha": "*"
     },
+    "name": "whosit",
     "repository": "git://github.com/freshlogic/whosit.git",
     "scripts": {
         "test": "mocha --reporter spec"
-    }
+    },
+    "version": "1.0.0"
 }
