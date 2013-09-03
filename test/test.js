@@ -51,4 +51,28 @@ describe('parse', function() {
 		assert.equal(name.salutation, 'Mister');
 		assert.equal(name.last, 'Rogers');
 	});
+
+	it('Doctor Who', function() {
+		var name = whosit.parse('Doctor Who');
+		assert.equal(name.salutation, 'Doctor');
+		assert.equal(name.last, 'Who');
+	});
+
+	it('Dr. Dre', function() {
+		var name = whosit.parse('Dr. Dre');
+		assert.equal(name.salutation, 'Dr.');
+		assert.equal(name.last, 'Dre');
+	});
+
+	it('Prof. Dre', function() {
+		var name = whosit.parse('Prof. Plum');
+		assert.equal(name.salutation, 'Prof.');
+		assert.equal(name.last, 'Plum');
+	});
+
+	it('Professor Plum', function() {
+		var name = whosit.parse('Professor Plum');
+		assert.equal(name.salutation, 'Professor');
+		assert.equal(name.last, 'Plum');
+	});
 });
