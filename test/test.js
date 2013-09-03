@@ -28,6 +28,14 @@ describe('parse', function() {
         assert.equal(name.last, 'Miller');
     });
 
+    it('Shawn Michael Miller Sr', function() {
+        var name = whosit.parse('Shawn Michael Miller Sr');
+        assert.equal(name.first, 'Shawn');
+        assert.equal(name.middle, 'Michael');
+        assert.equal(name.last, 'Miller');
+        assert.equal(name.suffix, 'Sr');
+    });
+
     it('Mr. Shawn Michael Miller Sr.', function() {
         var name = whosit.parse('Mr. Shawn Michael Miller Sr.');
         assert.equal(name.salutation, 'Mr.');
