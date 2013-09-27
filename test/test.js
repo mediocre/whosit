@@ -1,5 +1,5 @@
 var assert = require('assert');
-var whosit = require('../lib/whosit');
+var whosit = require('../lib');
 
 describe('Western Order', function() {
     it('Shawn', function() {
