@@ -45,15 +45,6 @@ describe('Western Order', function() {
         assert.equal(name.suffix, 'Sr.');
     });
 
-    it('Mr. Shawn Michael Miller Sr.', function() {
-        var name = whosit.parse('Mr. Shawn Michael Miller Sr.');
-        assert.equal(name.salutation, 'Mr.');
-        assert.equal(name.first, 'Shawn');
-        assert.equal(name.middle, 'Michael');
-        assert.equal(name.last, 'Miller');
-        assert.equal(name.suffix, 'Sr.');
-    });
-
     it('Mister Rogers', function() {
         var name = whosit.parse('Mister Rogers');
         assert.equal(name.salutation, 'Mister');
@@ -122,7 +113,7 @@ describe('Lexical Order', function() {
         assert.equal(name.last, 'Miller');
     });
 
-    it('Miller, Shawn, Prof.', function() {
+    it('Miller, Shawn Michael, Prof.', function() {
         var name = whosit.parse('Miller, Shawn Michael, Prof.');
         assert.equal(name.salutation, 'Prof.');
         assert.equal(name.first, 'Shawn');
