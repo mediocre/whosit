@@ -13,6 +13,12 @@ describe('Western Order', function() {
         assert.equal(name.last, 'Miller');
     });
 
+    it(' Shawn  Miller ', function() {
+        var name = whosit.parse(' Shawn  Miller ');
+        assert.equal(name.first, 'Shawn');
+        assert.equal(name.last, 'Miller');
+    });
+
     it('Shawn Michael Miller', function() {
         var name = whosit.parse('Shawn Michael Miller');
         assert.equal(name.first, 'Shawn');
