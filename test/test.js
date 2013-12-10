@@ -69,7 +69,7 @@ describe('Western Order', function() {
         assert.equal(name.last, 'Dre');
     });
 
-    it('Prof. Dre', function() {
+    it('Prof. Plum', function() {
         var name = whosit.parse('Prof. Plum');
         assert.equal(name.salutation, 'Prof.');
         assert.equal(name.last, 'Plum');
