@@ -80,6 +80,21 @@ describe('Western Order', function() {
         assert.equal(name.salutation, 'Professor');
         assert.equal(name.last, 'Plum');
     });
+
+    it('Robert Griffin III', function() {
+        var name = whosit.parse('Robert Griffin III');
+        assert.equal(name.first, 'Robert');
+        assert.equal(name.last, 'Griffin');
+        assert.equal(name.suffix, 'III');
+    });
+
+    it('Robert Lee Griffin III', function() {
+        var name = whosit.parse('Robert Lee Griffin III');
+        assert.equal(name.first, 'Robert');
+        assert.equal(name.middle, 'Lee');
+        assert.equal(name.last, 'Griffin');
+        assert.equal(name.suffix, 'III');
+    });
 });
 
 // http://en.wikipedia.org/wiki/Personal_name#Lexical_order
