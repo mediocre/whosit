@@ -148,4 +148,11 @@ describe('Lexical Order', function() {
         assert.equal(name.middle, 'Willem');
         assert.equal(name.last, 'van Gogh');
     });
+
+    it('Vincent Willem Dennis van Gogh', function() {
+        var name = whosit.parse('Vincent Willem Dennis van Gogh');
+        assert.equal(name.first, 'Vincent');
+        assert.equal(name.middle, 'Willem Dennis');
+        assert.equal(name.last, 'van Gogh');
+    });
 });
