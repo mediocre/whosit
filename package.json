@@ -6,7 +6,7 @@
     "keywords": ["name", "parser"],
     "main": "./lib",
     "name": "whosit",
-    "repository": "git://github.com/freshlogic/whosit.git",
+    "repository": "git://github.com/mediocre/whosit.git",
     "scripts": {
         "test": "mocha --reporter spec"
     },
