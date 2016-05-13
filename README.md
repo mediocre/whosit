@@ -44,4 +44,4 @@ console.log(name.middle); // Michael
 console.log(name.last); // Miller
 ```
 
-[![Build Status](https://travis-ci.org/freshlogic/whosit.png?branch=master)](https://travis-ci.org/freshlogic/whosit)
+[![Build Status](https://travis-ci.org/mediocre/whosit.png?branch=master)](https://travis-ci.org/mediocre/whosit)
