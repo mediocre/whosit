@@ -17,3 +17,5 @@ notifications:
     rooms:
       - secure: "prG6dRfCl+ToYLm1ewT/0HJQPlls6vrXEinjw36s3/1uC4grMdxjBkV2835XoInsRZ9Rvflu2ojPwXjVCAtYYJ7aXxXGUraVvC43NaBPTY71aj63odIKE73oR4TpSv258UdEVFjxoRPG1LACCLrTiiJ84UW75+5CCaHeOmOMwwM="
     on_success: always
+
+sudo: false
