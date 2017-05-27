@@ -1,6 +1,24 @@
 var assert = require('assert');
 var whosit = require('../lib');
 
+describe('Edge Cases', function() {
+    it('null', function() {
+        var name = whosit.parse(null);
+        assert(name);
+        assert.strictEqual(Object.keys(name).length, 0);
+    });
+
+    it('undefined', function() {
+        var name = whosit.parse();
+        assert(name);
+        assert.strictEqual(Object.keys(name).length, 0);
+
+        name = whosit.parse(undefined);
+        assert(name);
+        assert.strictEqual(Object.keys(name).length, 0);
+    });
+});
+
 describe('Western Order', function() {
     it('Shawn', function() {
         var name = whosit.parse('Shawn');
