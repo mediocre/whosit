@@ -1,8 +1,9 @@
-#whosit
+# whosit
+
+[![Build Status](https://travis-ci.org/mediocre/whosit.png?branch=master)](https://travis-ci.org/mediocre/whosit)
+[![Coverage Status](https://coveralls.io/repos/github/mediocre/whosit/badge.svg?branch=master)](https://coveralls.io/github/mediocre/whosit?branch=master)
 
 A personal name parser for Node.js: http://en.wikipedia.org/wiki/Personal_name
-
-[![NPM](https://nodei.co/npm/whosit.png)](https://nodei.co/npm/whosit/)
 
 ```js
 var whosit = require('whosit');
@@ -43,5 +44,3 @@ console.log(name.first); // Shawn
 console.log(name.middle); // Michael
 console.log(name.last); // Miller
 ```
-
-[![Build Status](https://travis-ci.org/mediocre/whosit.png?branch=master)](https://travis-ci.org/mediocre/whosit)
