@@ -5,7 +5,10 @@
         "istanbul": "*",
         "mocha": "*"
     },
-    "keywords": ["name", "parser"],
+    "keywords": [
+        "name",
+        "parser"
+    ],
     "main": "./lib",
     "name": "whosit",
     "repository": "git://github.com/mediocre/whosit.git",
