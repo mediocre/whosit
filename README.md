@@ -1,6 +1,6 @@
 # whosit
 
-[![Build Status](https://travis-ci.org/mediocre/whosit.png?branch=master)](https://travis-ci.org/mediocre/whosit)
+[![Build Status](https://github.com/mediocre/whosit/workflows/build/badge.svg)](https://github.com/mediocre/whosit/actions?query=workflow%3Abuild)
 [![Coverage Status](https://coveralls.io/repos/github/mediocre/whosit/badge.svg?branch=master)](https://coveralls.io/github/mediocre/whosit?branch=master)
 
 A personal name parser for Node.js: http://en.wikipedia.org/wiki/Personal_name
