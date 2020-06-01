@@ -32,7 +32,7 @@ jobs:
       run: npm run test
 
     - name: Run coverage
-      run: npm run coverage
+      run: npm run coveralls
 
     - name: Notify Slack
       if: always()
