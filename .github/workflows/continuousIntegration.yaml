@@ -10,6 +10,9 @@ jobs:
       matrix:
         node-version: [12.19.0, 14.15.0]
 
+    env:
+      DO_COVERALLS: 14.15.0
+
     steps:
     - name: Setup Node ${{ matrix.node-version }}
       uses: actions/setup-node@v1
@@ -28,11 +31,23 @@ jobs:
     - name: Run npm install
       run: npm install
 
-    - name: Run tests
-      run: npm run test
+    - name: Run tests and coverage
+      run: |-
+        if [ "${{ matrix.node-version }}"x == "${DO_COVERALLS}"x ]
+        then
+          npm run coveralls
+        else
+          true
+        fi
 
-    - name: Run coverage
-      run: npm run coveralls
+    - name: Run tests
+      run: |-
+        if [ ! "${{ matrix.node-version }}"x == "${DO_COVERALLS}"x ]
+        then
+          npm test
+        else
+          true
+        fi
 
   notify_slack:
     if: always()
