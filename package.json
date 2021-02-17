@@ -2,8 +2,8 @@
     "description": "A personal name parser for Node.js: http://en.wikipedia.org/wiki/Personal_name",
     "devDependencies": {
         "coveralls": "*",
-        "nyc": "*",
-        "mocha": "*"
+        "mocha": "*",
+        "nyc": "*"
     },
     "keywords": [
         "name",
