@@ -20,7 +20,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
 
     - name: Checkout repository
-      uses: actions/checkout@v2.1.0
+      uses: actions/checkout@v2
 
     - name: Install ESLint
       run: npm install -g eslint
