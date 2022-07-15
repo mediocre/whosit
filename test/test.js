@@ -160,3 +160,83 @@ describe('Edge Cases', function() {
         assert.strictEqual(Object.keys(name).length, 0);
     });
 });
+
+describe('Complex Surnames', function() {
+    it('Michael O Connor', function() {
+        var name = whosit.parse('Michael O Connor');
+        assert.equal(name.first, 'Michael');
+        assert.equal(name.middle, 'O');
+        assert.equal(name.last, 'Connor');
+    });
+    it('Michael O. Connor', function() {
+        var name = whosit.parse('Michael O. Connor');
+        assert.equal(name.first, 'Michael');
+        assert.equal(name.middle, 'O.');
+        assert.equal(name.last, 'Connor');
+    });
+    it('Michael O\'Connor', function() {
+        var name = whosit.parse('Michael O\'Connor');
+        assert.equal(name.first, 'Michael');
+        assert.equal(name.last, 'O\'Connor');
+    });
+    it('Michael Ó Conchúir', function() {
+        var name = whosit.parse('Michael Ó Conchúir');
+        assert.equal(name.first, 'Michael');
+        assert.equal(name.last, 'Ó Conchúir');
+    });
+    it('O\'Connor, Michael', function() {
+        var name = whosit.parse('O\'Connor, Michael');
+        assert.equal(name.first, 'Michael');
+        assert.equal(name.last, 'O\'Connor');
+    });
+    it('Ó Conchúir, Michael', function() {
+        var name = whosit.parse('Ó Conchúir, Michael');
+        assert.equal(name.first, 'Michael');
+        assert.equal(name.last, 'Ó Conchúir');
+    });
+    it('Fintan MacNeill', function() {
+        var name = whosit.parse('Fintan MacNeill');
+        assert.equal(name.first, 'Fintan');
+        assert.equal(name.last, 'MacNeill');
+    });
+    it('Fintan Mac Néill', function() {
+        var name = whosit.parse('Fintan Mac Néill');
+        assert.equal(name.first, 'Fintan');
+        assert.equal(name.last, 'Mac Néill');
+    });
+    it('MacNeill, Fintan', function() {
+        var name = whosit.parse('MacNeill, Fintan');
+        assert.equal(name.first, 'Fintan');
+        assert.equal(name.last, 'MacNeill');
+    });
+    it('Mac Néill, Fintan', function() {
+        var name = whosit.parse('Mac Néill, Fintan');
+        assert.equal(name.first, 'Fintan');
+        assert.equal(name.last, 'Mac Néill');
+    });
+    it('Joost van der Meer', function() {
+        var name = whosit.parse('Joost van der Meer');
+        assert.equal(name.first, 'Joost');
+        assert.equal(name.last, 'van der Meer');
+    });
+    it('van der Meer, Joost', function() {
+        var name = whosit.parse('van der Meer, Joost');
+        assert.equal(name.first, 'Joost');
+        assert.equal(name.last, 'van der Meer');
+    });
+    it('Van Morrison', function() {
+        var name = whosit.parse('Van Morrison');
+        assert.equal(name.first, 'Van');
+        assert.equal(name.last, 'Morrison');
+    });
+    it('Beyoncé Knowles-Carter', function() {
+        var name = whosit.parse('Beyoncé Knowles-Carter');
+        assert.equal(name.first, 'Beyoncé');
+        assert.equal(name.last, 'Knowles-Carter');
+    });
+    it('Maria de la Cruz', function() {
+        var name = whosit.parse('Maria de la Cruz');
+        assert.equal(name.first, 'Maria');
+        assert.equal(name.last, 'de la Cruz');
+    });
+});

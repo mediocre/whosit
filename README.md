@@ -44,3 +44,27 @@ console.log(name.first); // Shawn
 console.log(name.middle); // Michael
 console.log(name.last); // Miller
 ```
+
+## Support for many complex surnames
+```js
+var name = whosit.parse('Michael Ó Conchúir');
+console.log(name.first); // Michael
+console.log(name.last); // Ó Conchúir
+
+var name = whosit.parse('Michael O Connor');
+console.log(name.first); // Michael
+console.log(name.middle); // O
+console.log(name.last); // Connor
+
+name = whosit.parse('Fintan Mac Néill');
+console.log(name.salutation); // Fintan
+console.log(name.last); // Mac Néill
+
+name = whosit.parse('Joost van der Meer');
+console.log(name.first); // Joost
+console.log(name.last); // van der Meer
+
+name = whosit.parse('Maria de la Cruz');
+console.log(name.first); // Maria
+console.log(name.last); // de la Cruz
+```
