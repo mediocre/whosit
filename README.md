@@ -51,7 +51,7 @@ var name = whosit.parse('Michael Ó Conchúir');
 console.log(name.first); // Michael
 console.log(name.last); // Ó Conchúir
 
-var name = whosit.parse('Michael O Connor');
+name = whosit.parse('Michael O Connor');
 console.log(name.first); // Michael
 console.log(name.middle); // O
 console.log(name.last); // Connor
