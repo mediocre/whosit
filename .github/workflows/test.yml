@@ -25,10 +25,11 @@ jobs:
     - name: Install ESLint
       run: npm install -g eslint
 
+    - name: Install ESLine dependencies
+      run: npm install globals @eslint/js
+
     - name: Run ESLint
       run: eslint .
-      env:
-        ESLINT_USE_FLAT_CONFIG: false
 
     - name: Run npm install
       run: npm install
