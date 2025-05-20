@@ -52,11 +52,15 @@ jobs:
           true
         fi
 
-    - name: Slack Notification
+    - name: Notify Slack
       if: always()
-      uses: 8398a7/action-slack@v3
+      uses: homoluctus/slatify@master
       with:
-        status: ${{ job.status }}
-        fields: repo,commit,author,ref,workflow,job,took
-      env:
-        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        type: ${{ job.status }}
+        job_name: '${{ github.repository }} - Tests (${{ matrix.node-version }})'
+        channel: '#whosit'
+        url: ${{ secrets.SLACK_WEBHOOK_URL }}
+        commit: true
+        token: ${{ secrets.GITHUB_TOKEN }}
+        icon_emoji: ':mediocrebot:'
+        username: 'mercatalystbot'
