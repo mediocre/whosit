@@ -6,9 +6,9 @@
 A personal name parser for Node.js: http://en.wikipedia.org/wiki/Personal_name
 
 ```js
-var whosit = require('whosit');
+const whosit = require('whosit');
 
-var name = whosit.parse('Mr. Shawn Michael Miller Sr.');
+const name = whosit.parse('Mr. Shawn Michael Miller Sr.');
 
 console.log(name.salutation); // Mr.
 console.log(name.first); // Shawn
@@ -20,7 +20,7 @@ console.log(name.suffix); // Sr.
 ## Support for all kinds of names
 
 ```js
-var name = whosit.parse('Shawn Miller');
+let name = whosit.parse('Shawn Miller');
 console.log(name.first); // Shawn
 console.log(name.last); // Miller
 
@@ -35,7 +35,7 @@ console.log(name.first); // Prince
 ## Automatic detection of lexical formats
 
 ```js
-var name = whosit.parse('Miller,Shawn');
+let name = whosit.parse('Miller,Shawn');
 console.log(name.first); // Shawn
 console.log(name.last); // Miller
 
@@ -47,7 +47,7 @@ console.log(name.last); // Miller
 
 ## Support for many complex surnames
 ```js
-var name = whosit.parse('Michael Ó Conchúir');
+let name = whosit.parse('Michael Ó Conchúir');
 console.log(name.first); // Michael
 console.log(name.last); // Ó Conchúir
 
