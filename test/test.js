@@ -1,5 +1,6 @@
-var assert = require('assert');
-var whosit = require('../lib');
+const assert = require('assert');
+const { describe, it } = require('node:test');
+const whosit = require('../lib');
 
 describe('Western Order', function() {
     it('Shawn', function() {
