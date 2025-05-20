@@ -4,7 +4,6 @@
         "@eslint/js": "*",
         "globals": "*",
         "coveralls": "*",
-        "mocha": "*",
         "nyc": "*"
     },
     "keywords": [
@@ -15,8 +14,8 @@
     "name": "whosit",
     "repository": "git://github.com/mediocre/whosit.git",
     "scripts": {
-        "coveralls": "nyc npm test && nyc report --reporter=text-lcov | coveralls",
-        "test": "mocha --reporter spec"
+        "coveralls": "nyc node --test && nyc report --reporter=text-lcov | coveralls",
+        "test": "node --test"
     },
     "version": "1.2.0"
 }

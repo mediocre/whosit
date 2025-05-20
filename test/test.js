@@ -1,5 +1,6 @@
-var assert = require('assert');
-var whosit = require('../lib');
+const assert = require('assert');
+const { describe, it } = require('node:test');
+const whosit = require('../lib');
 
 describe('Western Order', function() {
     it('Shawn', function() {
@@ -156,6 +157,16 @@ describe('Edge Cases', function() {
         assert.strictEqual(Object.keys(name).length, 0);
 
         name = whosit.parse(undefined);
+        assert(name);
+        assert.strictEqual(Object.keys(name).length, 0);
+    });
+
+    it('empty string', function() {
+        var name = whosit.parse('');
+        assert(name);
+        assert.strictEqual(Object.keys(name).length, 0);
+
+        name = whosit.parse('   ');
         assert(name);
         assert.strictEqual(Object.keys(name).length, 0);
     });
