@@ -170,6 +170,16 @@ describe('Edge Cases', function() {
         assert(name);
         assert.strictEqual(Object.keys(name).length, 0);
     });
+
+    it('single comma', function() {
+        let name = whosit.parse(',');
+        assert(name);
+        assert.strictEqual(Object.keys(name).length, 0);
+
+        name = whosit.parse(' , ');
+        assert(name);
+        assert.strictEqual(Object.keys(name).length, 0);
+    });
 });
 
 describe('Complex Surnames', function() {
