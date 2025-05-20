@@ -25,7 +25,7 @@ jobs:
     - name: Install ESLint
       run: npm install -g eslint
 
-    - name: Install ESLine dependencies
+    - name: Install ESLint dependencies
       run: npm install globals @eslint/js
 
     - name: Run ESLint
