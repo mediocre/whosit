@@ -159,6 +159,16 @@ describe('Edge Cases', function() {
         assert(name);
         assert.strictEqual(Object.keys(name).length, 0);
     });
+
+    it('empty string', function() {
+        var name = whosit.parse('');
+        assert(name);
+        assert.strictEqual(Object.keys(name).length, 0);
+
+        name = whosit.parse('   ');
+        assert(name);
+        assert.strictEqual(Object.keys(name).length, 0);
+    });
 });
 
 describe('Complex Surnames', function() {
