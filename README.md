@@ -57,8 +57,8 @@ console.log(name.middle); // O
 console.log(name.last); // Connor
 
 name = whosit.parse('Fintan Mac Néill');
-console.log(name.salutation); // Fintan
-console.log(name.last); // Mac Néill
+console.log(name.first); // Fintan
+console.log(name.last);  // Mac Néill
 
 name = whosit.parse('Joost van der Meer');
 console.log(name.first); // Joost
