@@ -21,12 +21,11 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
-    - name: NPM
+    - name: Install dependencies
       run: npm install
 
     - name: Lint
-      run: |
-        npx eslint .
+      run: npx eslint .
 
     - name: Test
       run: |
@@ -38,7 +37,7 @@ jobs:
         fi
 
     - if: ${{ always() }}
-      name: Notify Slack
+      name: Send Slack notification
       run: |
         # Set common variables
         GH_RUN_URL="https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
