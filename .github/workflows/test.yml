@@ -5,7 +5,7 @@ on: [push, pull_request, workflow_dispatch]
 jobs:
   test:
     env:
-      DO_COVERALLS: 22.17.0
+      RUN_COVERAGE_FOR: 22.17.0
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -28,7 +28,7 @@ jobs:
 
     - name: Test
       run: |
-        if [ "${{ matrix.node-version }}" == "${DO_COVERALLS}" ]
+        if [ "${{ matrix.node-version }}" == "${RUN_COVERAGE_FOR}" ]
         then
           npm run coveralls
         else
