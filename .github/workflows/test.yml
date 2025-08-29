@@ -39,19 +39,18 @@ jobs:
       name: Send Slack notification
       run: |
         # Set common variables
-        REPO_NAME=$(echo "${{ github.repository }}" | cut -d'/' -f2)
         GH_RUN_URL="https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
         COMMIT_URL="https://github.com/${{ github.repository }}/commit/${{ github.sha }}"
         SHORT_SHA=$(echo "${{ github.sha }}" | cut -c1-7)
-        SLACK_CHANNEL=$(echo "#${REPO_NAME}" | sed 's/\./-/g')
+        SLACK_CHANNEL=$(echo "#${{ env.REPO_NAME }}" | sed 's/\./-/g')
         COMMIT_AUTHOR=$(git log -1 --format='%an' ${{ github.sha }} | sed "s/'/'\\\\''/g")
         COMMIT_MSG=$(git log -1 --pretty=format:%s ${{ github.sha }} | sed "s/'/'\\\\''/g" | head -c 100)
         
         # Set status-specific variables
         if [ "${{ job.status }}" == "success" ]; then
-          HEADER_TEXT=":white_check_mark: Tests passed for ${REPO_NAME}"
+          HEADER_TEXT=":white_check_mark: Tests passed for ${{ env.REPO_NAME }}"
         else
-          HEADER_TEXT=":x: Tests failed for ${REPO_NAME}"
+          HEADER_TEXT=":x: Tests failed for ${{ env.REPO_NAME }}"
         fi
         
         # Send Slack notification
