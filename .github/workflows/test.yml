@@ -27,6 +27,8 @@ jobs:
       run: npx eslint .
 
     - name: Test
+      env:
+        COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
       run: |
         if [ "${{ matrix.node-version }}" == "${RUN_COVERAGE_FOR}" ]
         then
