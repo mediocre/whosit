@@ -13,7 +13,7 @@
     ],
     "main": "./lib",
     "name": "whosit",
-    "repository": "git://github.com/mediocre/whosit.git",
+    "repository": "https://github.com/mediocre/whosit.git",
     "scripts": {
         "coveralls": "nyc node --test && nyc report --reporter=text-lcov | coveralls",
         "test": "node --test"
