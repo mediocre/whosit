@@ -45,8 +45,8 @@ jobs:
         COMMIT_URL="https://github.com/${{ github.repository }}/commit/${{ github.sha }}"
         SHORT_SHA=$(echo "${{ github.sha }}" | cut -c1-7)
         SLACK_CHANNEL=$(echo "#${{ env.REPO_NAME }}" | sed 's/\./-/g')
-        COMMIT_AUTHOR=$(git log -1 --format='%an' ${{ github.sha }} | sed 's/"/\\"/g' | sed "s/'/\\'/g")
-        COMMIT_MSG=$(git log -1 --pretty=format:%s ${{ github.sha }} | sed 's/"/\\"/g' | sed "s/'/\\'/g" | head -c 100)
+        COMMIT_AUTHOR=$(git log -1 --format='%an' ${{ github.sha }} | sed "s/'/'\\\\''/g")
+        COMMIT_MSG=$(git log -1 --pretty=format:%s ${{ github.sha }} | sed "s/'/'\\\\''/g" | head -c 100)
         
         # Set status-specific variables
         if [ "${{ job.status }}" == "success" ]; then
@@ -89,13 +89,13 @@ jobs:
                       "type": "plain_text"
                     },
                     "type": "button",
-                    "url": '"${GH_RUN_URL}"'
+                    "url": "'"${GH_RUN_URL}"'"
                   }
                 ],
                 "type": "actions"
               }
             ],
-            "channel": '"${SLACK_CHANNEL}"',
+            "channel": "'"${SLACK_CHANNEL}"'",
             "icon_url": "https://mercatalyst.com/apple-touch-icon.png",
             "username": "Mercatalyst"
           }' ${{ secrets.SLACK_WEBHOOK_URL }}
