@@ -2,8 +2,9 @@
     "description": "A personal name parser for Node.js: http://en.wikipedia.org/wiki/Personal_name",
     "devDependencies": {
         "@eslint/js": "*",
-        "globals": "*",
         "coveralls": "*",
+        "eslint": "*",
+        "globals": "*",
         "nyc": "*"
     },
     "keywords": [

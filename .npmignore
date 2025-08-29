@@ -1,4 +1,3 @@
 .eslint*
 .github/**
-.travis.yml
 test

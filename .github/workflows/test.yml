@@ -4,14 +4,12 @@ on: [push, pull_request, workflow_dispatch]
 
 jobs:
   test:
+    env:
+      DO_COVERALLS: 22.17.0
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
-        node-version: [22.14.0]
-
-    env:
-      DO_COVERALLS: 22.14.0
+        node-version: [22.17.0]
 
     steps:
     - name: Setup Node ${{ matrix.node-version }}
@@ -19,48 +17,84 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
 
-    - name: Checkout repository
+    - name: Checkout
       uses: actions/checkout@v2
 
-    - name: Install ESLint
-      run: npm install -g eslint
-
-    - name: Install ESLint dependencies
-      run: npm install globals @eslint/js
-
-    - name: Run ESLint
-      run: eslint .
-
-    - name: Run npm install
+    - name: NPM
       run: npm install
 
-    - name: Run tests and coverage
-      run: |-
-        if [ "${{ matrix.node-version }}"x == "${DO_COVERALLS}"x ]
+    - name: Lint
+      run: |
+        npx eslint .
+
+    - name: Test
+      run: |
+        if [ "${{ matrix.node-version }}" == "${DO_COVERALLS}" ]
         then
           npm run coveralls
         else
-          true
-        fi
-
-    - name: Run tests
-      run: |-
-        if [ ! "${{ matrix.node-version }}"x == "${DO_COVERALLS}"x ]
-        then
           npm test
-        else
-          true
         fi
 
-    - name: Notify Slack
-      if: always()
-      uses: homoluctus/slatify@master
-      with:
-        type: ${{ job.status }}
-        job_name: '${{ github.repository }} - Tests (${{ matrix.node-version }})'
-        channel: '#whosit'
-        url: ${{ secrets.SLACK_WEBHOOK_URL }}
-        commit: true
-        token: ${{ secrets.GITHUB_TOKEN }}
-        icon_emoji: ':mediocrebot:'
-        username: 'mercatalystbot'
+    - if: ${{ always() }}
+      name: Notify Slack
+      run: |
+        # Set common variables
+        GH_RUN_URL="https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+        COMMIT_URL="https://github.com/${{ github.repository }}/commit/${{ github.sha }}"
+        SHORT_SHA=$(echo "${{ github.sha }}" | cut -c1-7)
+        SLACK_CHANNEL=$(echo "#${{ env.REPO_NAME }}" | sed 's/\./-/g')
+        COMMIT_AUTHOR=$(git log -1 --format='%an' ${{ github.sha }})
+        COMMIT_MSG=$(git log -1 --pretty=format:%s ${{ github.sha }})
+        
+        # Set status-specific variables
+        if [ "${{ job.status }}" == "success" ]; then
+          HEADER_TEXT=":white_check_mark: Tests passed for ${{ env.REPO_NAME }}"
+        else
+          HEADER_TEXT=":x: Tests failed for ${{ env.REPO_NAME }}"
+        fi
+        
+        # Send Slack notification
+        curl -X POST -H 'Content-type: application/json' \
+          --data '{
+            "blocks": [
+              {
+                "text": {
+                  "text": "'"${HEADER_TEXT}"'",
+                  "type": "plain_text"
+                },
+                "type": "header"
+              },
+              {
+                "text": {
+                  "text": "*Author:* '"${COMMIT_AUTHOR}"'\n*Branch:* ${{ github.ref_name }}\n*Commit:* <'"${COMMIT_URL}"'|'"${SHORT_SHA}"'>\n*Message:* '"${COMMIT_MSG}"'",
+                  "type": "mrkdwn"
+                },
+                "type": "section"
+              },
+              {
+                "elements": [
+                  {
+                    "text": {
+                      "text": "Code Coverage",
+                      "type": "plain_text"
+                    },
+                    "type": "button",
+                    "url": "https://coveralls.io/github/mediocre/'"${REPO_NAME}"'"
+                  },
+                  {
+                    "text": {
+                      "text": "GitHub Action",
+                      "type": "plain_text"
+                    },
+                    "type": "button",
+                    "url": '"${GH_RUN_URL}"'
+                  }
+                ],
+                "type": "actions"
+              }
+            ],
+            "channel": '"${SLACK_CHANNEL}"',
+            "icon_url": "https://mercatalyst.com/apple-touch-icon.png",
+            "username": "Mercatalyst"
+          }' ${{ secrets.SLACK_WEBHOOK_URL }}
