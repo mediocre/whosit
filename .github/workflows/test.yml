@@ -6,6 +6,7 @@ jobs:
   test:
     env:
       DO_COVERALLS: 22.17.0
+      REPO_NAME: whosit
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -44,8 +45,8 @@ jobs:
         COMMIT_URL="https://github.com/${{ github.repository }}/commit/${{ github.sha }}"
         SHORT_SHA=$(echo "${{ github.sha }}" | cut -c1-7)
         SLACK_CHANNEL=$(echo "#${{ env.REPO_NAME }}" | sed 's/\./-/g')
-        COMMIT_AUTHOR=$(git log -1 --format='%an' ${{ github.sha }})
-        COMMIT_MSG=$(git log -1 --pretty=format:%s ${{ github.sha }})
+        COMMIT_AUTHOR=$(git log -1 --format='%an' ${{ github.sha }} | sed 's/"/\\"/g' | sed "s/'/\\'/g")
+        COMMIT_MSG=$(git log -1 --pretty=format:%s ${{ github.sha }} | sed 's/"/\\"/g' | sed "s/'/\\'/g" | head -c 100)
         
         # Set status-specific variables
         if [ "${{ job.status }}" == "success" ]; then
@@ -80,7 +81,7 @@ jobs:
                       "type": "plain_text"
                     },
                     "type": "button",
-                    "url": "https://coveralls.io/github/mediocre/'"${REPO_NAME}"'"
+                    "url": "https://coveralls.io/github/mediocre/${{ env.REPO_NAME }}"
                   },
                   {
                     "text": {
