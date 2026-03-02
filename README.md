@@ -2,6 +2,8 @@
 
 [![Build Status](https://github.com/stores-com/whosit/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/stores-com/whosit/actions?query=workflow%3Abuild+branch%3Amain)
 [![Coverage Status](https://coveralls.io/repos/github/stores-com/whosit/badge.svg)](https://coveralls.io/github/stores-com/whosit)
+[![npm version](https://img.shields.io/npm/v/whosit)](https://www.npmjs.com/package/whosit)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 A personal name parser for Node.js: http://en.wikipedia.org/wiki/Personal_name
 
