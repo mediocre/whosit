@@ -1,8 +1,8 @@
 {
     "description": "A personal name parser for Node.js: http://en.wikipedia.org/wiki/Personal_name",
     "devDependencies": {
-        "@eslint/js": "*",
-        "globals": "*"
+        "@eslint/js": "~10.0.1",
+        "globals": "~17.6.0"
     },
     "keywords": [
         "name",
